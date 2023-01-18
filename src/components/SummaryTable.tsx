@@ -2,16 +2,16 @@ import { generateDatesFromYearBeginning } from '../utils/generate-dates-from-yea
 
 import { HabitDay } from './HabitDay'
 
-const WEEKDAYS = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
-const summaryDates = generateDatesFromYearBeginning()
-const minimumSummaryDatesSize = 18 * 7 // 18 weeks
-const amountOfDaysToFill = minimumSummaryDatesSize - summaryDates.length
+const WEEK_DAYS = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
+const SUMMARY_DATES = generateDatesFromYearBeginning()
+const MINIMUM_SUMMARY_DATES_SIZE = 18 * 7 // 18 weeks
+const AMOUNT_OF_DAYS_TO_FILL = MINIMUM_SUMMARY_DATES_SIZE - SUMMARY_DATES.length
 
 export function SummaryTable() {
   return (
     <div className="w-full flex">
       <div className="grid grid-rows-7 grid-flow-row gap-3">
-        {WEEKDAYS.map((weekDay, index) => {
+        {WEEK_DAYS.map((weekDay, index) => {
           return (
             <div
               key={`${weekDay}-${index}`}
@@ -24,11 +24,11 @@ export function SummaryTable() {
       </div>
 
       <div className="grid grid-rows-7 grid-flow-col gap-3">
-        {summaryDates.map(date => {
+        {SUMMARY_DATES.map(date => {
           return <HabitDay key={date.toString()} />
         })}
 
-        {amountOfDaysToFill > 0 && Array.from({ length: amountOfDaysToFill }).map((_, index) => {
+        {AMOUNT_OF_DAYS_TO_FILL > 0 && Array.from({ length: AMOUNT_OF_DAYS_TO_FILL }).map((_, index) => {
           return (
             <div
               key={index}
